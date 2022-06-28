@@ -1,3 +1,7 @@
 .dccache
 app/node_modules
 app/dist
+terraform/.terraform
+terraform/.terraform*
+terraform/terraform.tfstate
+terraform/terraform.tfstate*
