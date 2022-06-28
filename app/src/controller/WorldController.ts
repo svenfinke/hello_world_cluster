@@ -7,10 +7,12 @@ export default class WorldController{
     }
 
     helloAction(req: Request, res: Response){
-        console.log(req.query.name || "John")
+        let name = req.query.name || "John"
+        res.send("Hello " + name + "!")
     }
 
     goodbyeAction(req: Request, res: Response){
-
+        let name = req.query.name || "John"
+        res.send("Goodbye " + name + "!")
     }
 }

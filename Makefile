@@ -1,6 +1,7 @@
 # k8s
 deploy:
 	./scripts/deploy.sh
+local: app_build app_run
 
 # TERRAFORM
 tf_plan:
@@ -10,8 +11,8 @@ tf_deploy:
 tf_init:
 	cd terraform && terraform init
 
-# APP
+# LOCAL
 app_build:
-	docker build ./app -t hw_test
+	docker build ./app -t hello_world
 app_run:
-	docker run -d hw_test
+	docker run -d hello_world
