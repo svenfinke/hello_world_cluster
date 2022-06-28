@@ -14,7 +14,7 @@ app.use(helmet())
 
 new WorldController(app);
 
-const PORT = 80;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
-  console.log(`server is running on PORT ${PORT}!`)
+  console.log(`server is running on PORT ${PORT}`)
 })

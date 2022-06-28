@@ -15,4 +15,4 @@ tf_init:
 app_build:
 	docker build ./app -t hello_world
 app_run:
-	docker run -d hello_world
+	docker run -d -p 80:80 hello_world
