@@ -29,6 +29,9 @@ The deployment will require the aws-cli and the terraform-backend to be configur
 
 The given solution will deploy a basic node.js application into an EKS and an ECS cluster. The ECS cluster will utilize Fargate to run the containers in a serverless environment. The same could be done in EKS, but I wanted to show the journey from classic k8s into a serverless AWS native solution.
 
+The EKS cluster will be deployed in a private subnet which can access the internet through a NAT gateway. The cluster spans over 2 availability zones. Additional services like loadbalancers are not explicitly deployed, but will be created automatically by EKS when using a service of the type `LoadBalancer`.
+The ECS service will be directly exposed with a public IP and be deployed into the public subnets.
+
 ![diagram](diagram.png)
 
 
