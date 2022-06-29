@@ -1,3 +1,5 @@
+.PHONY: deploy local tf_plan tf_deploy tf_init app_build app_run
+
 # k8s
 deploy:
 	./scripts/deploy.sh
