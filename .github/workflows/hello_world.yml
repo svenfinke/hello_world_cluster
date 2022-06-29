@@ -37,4 +37,4 @@ jobs:
         run: tflint --init
       - name: Run TFLint
         working-directory: ./terraform
-        run: tflint
+        run: tflint -f compact
