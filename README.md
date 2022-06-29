@@ -13,6 +13,7 @@
   + [Configuration](#configuration)
 * [Pipeline](#pipeline)
 * [Monitoring](#monitoring)
+  + [Security](#security)
 
 ## Prerequisites
 
@@ -69,3 +70,7 @@ I utilized GitHub Actions to briefly check my bash scripts and run a Terraform L
 As a monitoring solution, I would suggest an external managed solution like Datadog. They can be linked to the AWS account and automatically track many AWS services. I worked with Datadog in the past, and they offer agents that can be installed on any EC2 instance where you'd like to collect additional metrics and application logs. In k8s you'd install a sidecar on every host to track running containers.
 It will be a good idea to think about alerting in any production workload, and probably also on staging. But the alerting should be kept to an absolute minimum and to business critical events, to reduce the risk of missing important events due to the amount OS messages coming in. Many applications can be set up to be self-healing, so any malfunctioning host or container will be replaced. Only if this happens extraordinary often in a defined period of time, alerts should be triggered. But there are some other metrics that might be important, depending on the architecture: response times, message-queue sizes, size of dead-letter queues, amount of 5xx or 4xx errors, system load.
 Finding the right level for the alerting can be hard and will be an ongoing process.
+
+## Security
+Monitoring security issues could be centrally managed with AWS Service Hub. The Security Hub can aggregate findings from AWS Config, GuardDuty, Detective, Inspector and other security related services from AWS. But: Managing the findings in the Security Hub is quite painful, so it is always a good idea to push the data from the SH at least into a ticketing system.
+In addition to the ongoing security monitoring with the Security Hub, planning a Well-Architected Review at least once a year is a good idea. This will help to constantly improve not only on security, but also on stability and operability of the application.
