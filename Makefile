@@ -1,4 +1,6 @@
-.PHONY: deploy local tf_plan tf_deploy tf_init app_build app_run
+.PHONY: deploy_all deploy local tf_plan tf_deploy tf_init app_build app_run
+
+deploy_all: tf_deploy deploy
 
 # k8s
 deploy:

@@ -1,3 +1,6 @@
+# Multi-Stage Dockerfile
+# ----
+# This first stage will install all dependencies and build the application 
 FROM node:12.17.0-alpine
 WORKDIR /usr
 COPY package.json ./
@@ -7,7 +10,8 @@ RUN ls -a
 RUN npm install
 RUN npm run build
 
-## this is stage two , where the app actually runs
+# Stage 2 where the application acutaly runs. Only production deps are being
+# installed. This can drastically reduce the size of the image.
 FROM node:12.17.0-alpine
 WORKDIR /usr
 COPY package.json ./

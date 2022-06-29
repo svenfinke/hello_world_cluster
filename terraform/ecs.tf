@@ -2,15 +2,15 @@ resource "aws_ecs_task_definition" "hello_world" {
   family = "hello_world"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  cpu                      = 1024
-  memory                   = 2048
+  cpu                      = 256
+  memory                   = 512
   execution_role_arn = aws_iam_role.ecsTaskExecutionRole.arn
   container_definitions = jsonencode([
     {
       name      = "web"
-      image     = "090893809397.dkr.ecr.eu-central-1.amazonaws.com/hello_world_cluster:latest"
-      cpu       = 512
-      memory    = 128
+      image     = "${aws_ecr_repository.hello_world.repository_url}:latest"
+      cpu       = 256
+      memory    = 512
       essential = true
       portMappings = [
         {
@@ -133,6 +133,5 @@ resource "aws_ecs_service" "hello_world" {
     security_groups = [ aws_security_group.ecs.id ]
   }
   desired_count   = 1
-
-  count = var.deploy_ecs ? 1 : 0
+  depends_on = [ aws_ecs_cluster.hello_world ]
 }
