@@ -30,8 +30,11 @@ jobs:
         with:
           tflint_version: v0.29.0
       - name: Show version
+        working-directory: ./terraform
         run: tflint --version
       - name: Init TFLint
+        working-directory: ./terraform
         run: tflint --init
       - name: Run TFLint
+        working-directory: ./terraform
         run: tflint -f compact
